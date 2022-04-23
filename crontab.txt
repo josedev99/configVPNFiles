@@ -1,0 +1,1 @@
+* * * * * cd /home/josedev && bash runproxy.sh
