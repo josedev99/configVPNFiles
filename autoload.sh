@@ -31,8 +31,8 @@ function dependencies(){
         if [ $(echo $?) == "0" ]; then
                 echo -e "${greenColour}\nPython proxy : V ${endColour}"
         else
-                 echo -e "${greenColour}\nPDirect : F ${endColour}"
-                wget https://raw.githubusercontent.com/Jose-developer-start/configVPNFiles/main/PDirect.py
+                echo -e "${greenColour}\nPDirect : F ${endColour}"
+                wget https://raw.githubusercontent.com/Jose-developer-start/configVPNFiles/main/PDirect.py > /dev/null 2>&1 &
         fi
          test -f /usr/bin/netstat
         if [ $(echo $?) == "0" ]; then
@@ -47,13 +47,13 @@ function dependencies(){
                 echo -e "${greenColour}\nbadvpn : V ${endColour}"
         else
                 echo -e "${greenColour}\nnbadvpn : F ${endColour}"
-                wget https://github.com/ambrop72/badvpn/archive/master.zip
-                unzip master.zip
+                wget https://github.com/ambrop72/badvpn/archive/master.zip > /dev/null 2>&1 &
+                unzip master.zip > /dev/null 2>&1 &
                 cd badvpn-master/
                 mkdir build
                 cd build/
-                cmake .. -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
-                make install
+                cmake .. -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1 > /dev/null 2>&1 &
+                make install > /dev/null 2>&1 &
                 cd $HOME
                 rm master.zip
         fi
