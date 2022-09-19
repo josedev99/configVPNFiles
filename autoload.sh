@@ -42,20 +42,15 @@ function dependencies(){
                  apt install net-tools > /dev/null 2>&1 &
         fi
 
-        test -f /usr/local/bin/badvpn-udpgw
+        test -f /bin/badvpn-udpgw
         if [ $(echo $?) == "0" ]; then
-                echo -e "${greenColour}\nbadvpn : V ${endColour}"
+                echo -e "${greenColour}\nBadvpn : V ${endColour}"
         else
                 echo -e "${greenColour}\nnbadvpn : F ${endColour}"
-                wget https://github.com/ambrop72/badvpn/archive/master.zip > /dev/null 2>&1 &
-                unzip master.zip > /dev/null 2>&1 &
-                cd badvpn-master/
-                mkdir build
-                cd build/
-                cmake .. -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1 > /dev/null 2>&1 &
-                make install > /dev/null 2>&1 &
-                cd $HOME
-                rm master.zip
+                wget https://www.dropbox.com/s/uu3opxoevth47af/badvpn-udpgw -o /dev/null
+                mv -f $HOME/badvpn-udpgw /bin/badvpn-udpgw
+                chmod 777 /bin/badvpn-udpgw
+                echo -e "Config BADVPN instalado..."
         fi
 
 }
