@@ -1,3 +1,6 @@
+#!/bin/bash
+
+#edit: nano /etc/sysctl.conf
 net.ipv4.tcp_window_scaling = 1
 net.core.rmem_max = 16777216
 net.core.wmem_max = 16777216
