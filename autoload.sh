@@ -102,15 +102,13 @@ function runProxyBadvpn(){
 function viewPorts(){
         netstat -ltnp
 }
-
-if [ $activePython == false ]; then
-        echo -e "${greenColour}Activando...${endColour}"
-        echo "* * * * * bash /root/runproxy.sh" >> /var/spool/cron/crontabs/root
-fi
-if [ $activeBadvpn == false ]; then
-        echo -e "${greenColour}Activando...${endColour}"
-        echo "* * * * * bash /root/runproxy.sh" >> /var/spool/cron/crontabs/root
-fi
+function addCrontab(){
+        if [ $activePython == false ]; then
+                echo -e "${greenColour}Activando...${endColour}"
+                echo "* * * * * bash /root/runproxy.sh" >> /var/spool/cron/crontabs/root
+        fi    
+}
+addCrontab
 
 while true; do
         menu
